@@ -10,7 +10,7 @@ export default (props) => {
             </head>
             <body>
                 <main id="main-container">
-                    <Container  name="name" />
+                    <Container />
                 </main>
             </body>
             {props.scripts.map(script => (<script src={`/${script}`} key={script}></script>))}

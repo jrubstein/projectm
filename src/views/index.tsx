@@ -4,6 +4,6 @@ import Container from './Container'
 import './styles/root.css'
 
 ReactDOM.hydrate(
-    <Container name="name"/>,
+    <Container />,
     document.getElementById('main-container')
 )

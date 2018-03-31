@@ -9,17 +9,18 @@ context(class {
             output: "dist/public/$name.js",
             target : "browser@es5",
             hash: this.isProduction,
+            sourceMaps: !this.isProduction,
             useTypescriptCompiler : true,
             plugins: [
                 CSSPlugin({
                     group: "styles.css"
                 }),
                 PostCSSPlugin([require('postcss-nested')]),
-                SVGPlugin(),
                 this.isProduction && QuantumPlugin({
                     bakeApiIntoBundle: "app",
                     uglify: true,
-                    css : true
+                    css : true,
+                    treeshake: true,
                 })
             ]
         })

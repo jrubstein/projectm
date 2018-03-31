@@ -11,9 +11,10 @@
     "clean": "rm -rfv ./dist/server",
     "build": "yarn clean && tsc",
     "build:watch": "yarn clean && tsc -w",
-    "start": "node ./dist/server/index.js",
+    "start": "node -r dotenv/config ./dist/src/server/index.js",
     "build:fuse": "node ./fuse.js",
-    "build:fuse:dist": "node ./fuse.js dist"
+    "build:fuse:dist": "node ./fuse.js dist",
+    "index": "node -r dotenv/config ./dist/scripts/createIndex"
   },
   "devDependencies": {
     "@types/koa": "^2.0.44",
@@ -21,11 +22,13 @@
     "@types/koa-static": "^4.0.0",
     "@types/react": "^16.1.0",
     "@types/react-dom": "^16.0.4",
+    "dotenv": "^5.0.1",
     "fuse-box": "^3.1.3",
     "typescript": "^2.8.1",
     "uglify-js": "^3.3.16"
   },
   "dependencies": {
+    "elasticsearch": "^14.2.2",
     "koa": "^2.5.0",
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.2",

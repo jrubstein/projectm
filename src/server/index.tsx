@@ -5,15 +5,32 @@ import * as React from 'react'
 import * as ReactDOMServer from 'react-dom/server'
 import * as Router from 'koa-router'
 import * as serve from 'koa-static'
+import * as elastic from 'elasticsearch'
 import Home from '../views/Home'
 
 (async () => {
   const app = new Koa()
   const router = new Router({prefix: '/search'});
-  const publicFolder = path.join(__dirname, '..', 'public')
+  const publicFolder = path.join(__dirname, '..', '..', 'public')
+  const client = new elastic.Client({host: process.env.BONSAI_URI})
+  const search = async (query: string) => {
+    return client.search({
+      index: 'moments',
+      type: 'moment',
+      body: {
+        query: {
+          match: {
+            tags: query,
+          }
+        }
+      }
+    })
+  }
+
+  console.log('ping', await client.ping())
   
-  router.get('/', context => {
-    context.body = {hits: []}
+  router.get('/', async context => {
+    context.body = await search(context.query.q)
     context.status = 200
   });
   
@@ -21,12 +38,12 @@ import Home from '../views/Home'
   app.use(serve(publicFolder))
   
   const files = await fs.readdirSync(publicFolder)
-  const scripts = files.filter(file => file.indexOf('.js') > 0)
+  const scripts = files.filter(file => file.indexOf('.js') > 0 && file.indexOf('.map') < 0)
   const styles = files.filter(file => file.indexOf('.css') > 0)
 
   // Index
   app.use(ctx => {
-    ctx.body = ReactDOMServer.renderToStaticMarkup(<Home scripts={scripts} styles={styles}/>)
+    ctx.body = ReactDOMServer.renderToStaticMarkup(<Home scripts={scripts} styles={styles} />)
   })
   
   app.listen(3000, () => {

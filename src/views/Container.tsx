@@ -1,5 +1,10 @@
 import * as React from 'react'
+import Nagivation from './components/Navigation'
 
 export default (props) => {
-    return <span>Hola</span>
+    return (
+        <React.Fragment>
+            <Nagivation />
+        </React.Fragment>
+    )
 }

@@ -19,9 +19,9 @@ export class MomentsContainer extends React.Component<MomentsContainerProperties
     }
 }
 
-const mapStateToProps = ({moments}: State) => ({
-    moments
-});
+const mapStateToProps = (state: State) => {
+    return { moments: state.moments.moments }
+}
   
 const mapDispatchToProps = () => ({});
 

@@ -5,7 +5,7 @@ import {createNewStore} from './reducers/store'
 import * as Safe from 'react-safe'
 
 export default (props) => {
-    const initialState = `window.__INIT_STATE__ = {moments: ${JSON.stringify(props.moments)}}`
+    const initialState = `window.__INIT_STATE__ = {moments: {moments:${JSON.stringify(props.moments)}}}`
     return (
         <html>
             <head>
@@ -14,7 +14,7 @@ export default (props) => {
             </head>
             <body>
                 <main id="main-container">
-                    <Provider store={createNewStore({moments: props.moments})}>
+                    <Provider store={createNewStore({moments: {moments: props.moments}})}>
                         <Container />
                     </Provider>
                 </main>

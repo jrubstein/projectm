@@ -8,6 +8,12 @@
   dependencies:
     "@types/node" "*"
 
+"@types/axios@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@types/axios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
+  dependencies:
+    axios "*"
+
 "@types/body-parser@*":
   version "1.16.8"
   resolved "https://registry.yarnpkg.com/@types/body-parser/-/body-parser-1.16.8.tgz#687ec34140624a3bec2b1a8ea9268478ae8f3be3"
@@ -117,16 +123,6 @@
 "@types/react@*", "@types/react@^16.1.0":
   version "16.1.0"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.1.0.tgz#6c0e9955ce73f332b4a1948d45decaf18c764c6e"
-
-"@types/react@~15":
-  version "15.6.15"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-15.6.15.tgz#1856f932120311aa566f91e6d0c6e613d6448236"
-
-"@types/redux-saga@^0.9.31":
-  version "0.9.31"
-  resolved "https://registry.yarnpkg.com/@types/redux-saga/-/redux-saga-0.9.31.tgz#6b8de326835e179037a3bbcf658a10f60542bafc"
-  dependencies:
-    redux "^3.6.0"
 
 "@types/redux@^3.6.0":
   version "3.6.0"
@@ -300,6 +296,13 @@ aws-sign2@~0.7.0:
 aws4@^1.2.1, aws4@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.6.0.tgz#83ef5ca860b2b32e4a0deedee8c771b9db57471e"
+
+axios@*, axios@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
+  dependencies:
+    follow-redirects "^1.3.0"
+    is-buffer "^1.1.5"
 
 balanced-match@^1.0.0:
   version "1.0.0"
@@ -867,6 +870,12 @@ fliplog@^0.3.13:
   resolved "https://registry.yarnpkg.com/fliplog/-/fliplog-0.3.13.tgz#dd0d786e821822aae272e0ddc84012596a96154c"
   dependencies:
     chain-able "^1.0.1"
+
+follow-redirects@^1.3.0:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.4.1.tgz#d8120f4518190f55aac65bb6fc7b85fcd666d6aa"
+  dependencies:
+    debug "^3.1.0"
 
 for-in@^1.0.1:
   version "1.0.2"
@@ -2026,14 +2035,6 @@ react-safe@^1.1.1:
   dependencies:
     html-tags "^2.0.0"
 
-react-saga@^0.2.6:
-  version "0.2.6"
-  resolved "https://registry.yarnpkg.com/react-saga/-/react-saga-0.2.6.tgz#52968cc0b60f351d4958fc2c3abc17af59953dee"
-  dependencies:
-    "@types/react" "~15"
-    "@types/redux-saga" "^0.9.31"
-    is-generator-function "^1.0.3"
-
 react@^16.2.0, react@^16.3.0:
   version "16.3.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.3.0.tgz#fc5a01c68f91e9b38e92cf83f7b795ebdca8ddff"
@@ -2085,6 +2086,10 @@ realm-utils@^1.0.9:
   dependencies:
     app-root-path "^1.3.0"
     mkdirp "^0.5.1"
+
+redux-thunk@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.2.0.tgz#e615a16e16b47a19a515766133d1e3e99b7852e5"
 
 redux@*, redux@^3.6.0, redux@^3.7.2:
   version "3.7.2"

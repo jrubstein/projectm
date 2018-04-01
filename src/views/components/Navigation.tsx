@@ -1,6 +1,7 @@
 import * as React from 'react'
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 import {State} from '../reducers/Store'
+import { fetchMoments } from '../actions'
 
 interface NavigationProperties {
     query: string,
@@ -21,12 +22,12 @@ export class Nagivation extends React.Component<NavigationProperties> {
     }
 }
 
-const mapStateToProps = ({query}: State) => ({
-    query
+const mapStateToProps = (state: State) => ({
+    query: state.moments.query
 });
   
 const mapDispatchToProps = (dispatch) => ({
-    fetchMoments: (event) => {console.log(event.target.value)},
+    fetchMoments: (event) => {dispatch(fetchMoments(event.target.value))},
 });
 
 export default connect(

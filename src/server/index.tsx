@@ -19,7 +19,7 @@ import Home from '../views/Home'
       type: 'moment',
       body: {
         query: {
-          match: {
+          match_phrase: {
             tags: query,
           }
         }

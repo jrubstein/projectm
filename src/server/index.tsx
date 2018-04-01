@@ -40,10 +40,17 @@ import Home from '../views/Home'
   const files = await fs.readdirSync(publicFolder)
   const scripts = files.filter(file => file.indexOf('.js') > 0 && file.indexOf('.map') < 0)
   const styles = files.filter(file => file.indexOf('.css') > 0)
+  const moments = await search('jonathan')
 
   // Index
   app.use(ctx => {
-    ctx.body = ReactDOMServer.renderToStaticMarkup(<Home scripts={scripts} styles={styles} />)
+    ctx.body = ReactDOMServer.renderToStaticMarkup(
+      <Home
+        scripts={scripts}
+        styles={styles}
+        moments={moments.hits.hits.map(hit => hit._source)}
+      />
+    )
   })
   
   app.listen(3000, () => {

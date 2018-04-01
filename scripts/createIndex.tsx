@@ -41,7 +41,6 @@ import * as elastic from 'elasticsearch'
             },
         }
     })
-    console.log(1)
     await client.bulk({
         body: [
             { index:  { _index: index, _type: 'moment', _id: 1 } },
@@ -55,5 +54,4 @@ import * as elastic from 'elasticsearch'
             }
         ]
     })
-    console.log(2)
 })()

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Container from './Container'
 import { Provider } from 'react-redux';
-import {createNewStore} from './reducers/store'
+import {createNewStore} from './reducers/Store'
 import * as Safe from 'react-safe'
 
 export default (props) => {

@@ -13,15 +13,18 @@ import Home from '../views/Home'
   const router = new Router({prefix: '/search'});
   const publicFolder = path.join(__dirname, '..', '..', 'public')
   const client = new elastic.Client({host: process.env.BONSAI_URI})
-  const search = async (query: string) => {
+  const search = async (query?: string) => {
     return client.search({
       index: 'moments',
       type: 'moment',
       body: {
-        query: {
-          match_phrase: {
-            tags: query,
+        query: !!query ? {
+          multi_match: {
+            query: query,
+            fields: ['tags', 'title']
           }
+        } : {
+          match_all: {}
         }
       }
     })
@@ -40,7 +43,7 @@ import Home from '../views/Home'
   const files = await fs.readdirSync(publicFolder)
   const scripts = files.filter(file => file.indexOf('.js') > 0 && file.indexOf('.map') < 0)
   const styles = files.filter(file => file.indexOf('.css') > 0)
-  const moments = await search('jonathan')
+  const moments = await search()
 
   // Index
   app.use(ctx => {

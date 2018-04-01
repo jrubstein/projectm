@@ -1,3 +1,7 @@
+$height: 40px;
+$medium-padding: 8px;
+$max-width: 800px;
+
 body {
     margin: 0;
     padding: 0;
@@ -6,28 +10,35 @@ body {
 
 nav {
     width: 100%;
-    height: 55px;
+    height: calc($height + $medium-padding * 2);
     position: absolute;
     top: 0;
     border-bottom: 1px solid #d8d8d8;
 }
 
 nav > div {
-    padding: 12px;
-    max-width: 800px;
+    padding: $medium-padding;
+    max-width: $max-width;
     margin: auto;
     display: flex;
     justify-content: space-between;
 }
 
+nav > div img {
+    width: $height;
+    height: $height;
+    border-radius: 50%;
+}
+
 nav > div input {
-    width: 70%;
-    height: 30px;
-    border: 0;
+    width: 90%;
+    height: $height;
+    margin: 0 8px;
+    padding: $medium-padding;
 }
 
 div.moments-container {
-    padding: 67px 12px;
-    max-width: 800px;
+    padding: calc($height + $medium-padding * 3) $medium-padding;
+    max-width: $max-width;
     margin: auto;
 }

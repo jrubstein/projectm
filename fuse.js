@@ -2,6 +2,15 @@ const { FuseBox, Sparky, SVGPlugin, CSSPlugin, QuantumPlugin, PostCSSPlugin } = 
 const { src, task, watch, context, fuse } = require("fuse-box/sparky");
 
 
+const postCSSPlugins = [
+    require('postcss-nested'),
+    require('postcss-simple-vars'),
+    require('postcss-calc'),
+    require("postcss-cssnext")({
+        browsers: ["ie >= 11", "last 2 versions"],
+    }),
+]
+
 context(class {
     getConfig() {
         return FuseBox.init({
@@ -12,10 +21,12 @@ context(class {
             sourceMaps: !this.isProduction,
             useTypescriptCompiler : true,
             plugins: [
-                CSSPlugin({
-                    group: "styles.css"
-                }),
-                PostCSSPlugin([require('postcss-nested')]),
+                [
+                    PostCSSPlugin(postCSSPlugins),
+                    CSSPlugin({
+                        group: "styles.css"
+                    }),
+                ],
                 this.isProduction && QuantumPlugin({
                     bakeApiIntoBundle: "app",
                     uglify: true,
@@ -48,7 +59,6 @@ task("default", ["clean"], async context => {
 task("dist", ["clean"], async context => {
     context.isProduction = true;
     const fuse = context.getConfig();
-    fuse.dev(); // remove it later
     context.createBundle(fuse);
     await fuse.run();
 });

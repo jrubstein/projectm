@@ -4,10 +4,12 @@ import * as elastic from 'elasticsearch'
     const client = new elastic.Client({host: process.env.BONSAI_URI})
     const ping = await client.ping()
     const index = 'moments'
+
     if (!ping) {
         console.log('There is no ping')
         return
     }
+
     await client.indices.delete({index})
     await client.indices.create({
         index,
@@ -49,6 +51,7 @@ import * as elastic from 'elasticsearch'
             },
         }
     })
+
     await client.bulk({
         body: [
             { index:  { _index: index, _type: 'moment', _id: 1 } },

@@ -59,5 +59,7 @@ div.moment-container {
      & img {
         width: 240px;
         height: 320px;
+        border-radius: 5px;
+        border: 1px solid lightblue;
     }
 }

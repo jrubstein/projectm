@@ -10,6 +10,7 @@
   "scripts": {
     "clean": "rm -rfv ./dist/server",
     "build": "yarn clean && tsc",
+    "postinstall": "yarn build && yarn build:fuse:dist",
     "build:watch": "yarn clean && tsc -w",
     "start": "node -r dotenv/config ./dist/src/server/index.js",
     "build:fuse": "node ./fuse.js",

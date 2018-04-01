@@ -1,5 +1,6 @@
 $height: 40px;
 $medium-padding: 8px;
+$medium-margin: 12px;
 $max-width: 800px;
 
 body {
@@ -14,7 +15,7 @@ nav {
     height: calc($height + $medium-padding * 2);
     position: absolute;
     top: 0;
-    border-bottom: 1px solid #d8d8d8;
+    border-bottom: 1px solid lightblue;
 }
 
 nav > div {
@@ -49,4 +50,14 @@ div.moments-container {
     padding: calc($height + $medium-padding * 3) $medium-padding;
     max-width: $max-width;
     margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.moment-container {
+    margin: $medium-margin;
+     & img {
+        width: 240px;
+        height: 320px;
+    }
 }

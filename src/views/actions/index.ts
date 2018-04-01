@@ -13,6 +13,9 @@ export const fetchingMoments = () => {
 
 export const fetchMoments = (query) => {
     return dispatch => {
+        if (query.length < 3 && query.length !== 0) {
+            return
+        }
         axios.get(`/search?q=${query}`)
         .then(
             (response) => {

@@ -2,6 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux';
 import { State } from '../reducers/Store'
 import { Moment } from '../../server/Moment'
+import MomentsCard from './MomentCard'
 
 interface MomentsContainerProperties {
     moments: Moment[],
@@ -12,7 +13,7 @@ export class MomentsContainer extends React.Component<MomentsContainerProperties
         return (
             <div className="moments-container">
                 {this.props.moments.map(
-                    moment => <div key={moment.id} className="moment">{moment.title}</div>
+                    moment => <MomentsCard moment={moment} key={moment.id}/>
                 )}
             </div>
         )

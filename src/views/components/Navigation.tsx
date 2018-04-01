@@ -13,7 +13,7 @@ export class Nagivation extends React.Component<NavigationProperties> {
         return (
             <nav>
                 <div>
-                    <img src="http://profilepics.xyz/wp-content/uploads/2017/07/Cute-Profile-pics-1.gif" />
+                    <img src="https://res.cloudinary.com/jonarub/image/upload/c_scale,w_40/v1522602062/wtd9ofi8dajaxrg8ihon.jpg" />
                     <input type="text" placeholder="Search something..." value={this.props.query} onChange={this.props.fetchMoments} />
                 </div>
             </nav>

@@ -14,7 +14,8 @@
     "start": "node -r dotenv/config ./dist/src/server/index.js",
     "build:fuse": "node ./fuse.js",
     "build:fuse:dist": "node ./fuse.js dist",
-    "index": "node -r dotenv/config ./dist/scripts/createIndex"
+    "index": "node -r dotenv/config ./dist/scripts/createIndex",
+    "pictures": "node -r dotenv/config ./dist/scripts/uploadPictures"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",
@@ -35,6 +36,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "cloudinary": "^1.11.0",
     "elasticsearch": "^14.2.2",
     "koa": "^2.5.0",
     "koa-router": "^7.4.0",

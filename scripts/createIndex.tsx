@@ -1,9 +1,12 @@
 import * as elastic from 'elasticsearch'
+import * as path from 'path'
 
 (async ()=> {
     const client = new elastic.Client({host: process.env.BONSAI_URI})
     const ping = await client.ping()
     const index = 'moments'
+    const momentsJson = path.join(__dirname, '..', '..', 'resources', 'moments.json')
+    const moments = require(momentsJson)
 
     if (!ping) {
         console.log('There is no ping')
@@ -21,7 +24,7 @@ import * as elastic from 'elasticsearch'
                     filter: {
                         autocomplete_filter: { 
                             type:     'edge_ngram',
-                            min_gram: 1,
+                            min_gram: 3,
                             max_gram: 20
                         }
                     },
@@ -51,27 +54,38 @@ import * as elastic from 'elasticsearch'
             },
         }
     })
-
+    // console.log( moments.reduce((result, moment) => {
+    //     result.push({ index:  { _index: index, _type: 'moment', _id: Number(moment.id) } })
+    //     result.push({ ...moment, date: new Date(moment.date)})
+    //     return result
+    // }, []))
     await client.bulk({
-        body: [
-            { index:  { _index: index, _type: 'moment', _id: 1 } },
-            {
-                id: 1,
-                date: new Date(),
-                title: 'This is a title',
-                description: 'Nice description',
-                tags: ['picture', 'jonathan', 'staruday'],
-                pictureURL: 'https://my.picture.com/123123'
-            },
-            { index:  { _index: index, _type: 'moment', _id: 2 } },
-            {
-                id: 2,
-                date: new Date(),
-                title: 'Another picture',
-                description: 'Nice description',
-                tags: ['rubstein'],
-                pictureURL: 'https://my.picture.com/123123'
-            }
-        ]
+        body: moments.reduce((result, moment) => {
+            result.push({ index:  { _index: index, _type: 'moment', _id: Number(moment.id) } })
+            result.push({...moment, date: new Date(moment.date)})
+            return result
+        }, [])
     })
+    // await client.bulk({
+    //     body: [
+    //         { index:  { _index: index, _type: 'moment', _id: 1 } },
+    //         {
+    //             "id": "1",
+    //             "date": new Date(),
+    //             "title": "Melina, the pretty",
+    //             "description": "Awesome doggy :)",
+    //             "tags": ["melina", "melu", "dog"],
+    //             "pictureURL": "https://res.cloudinary.com/jonarub/image/upload/c_scale,w_768/v1522600994/x0tgx2g7n7b3zdtcojjb.jpg"
+    //         },
+    //         { index:  { _index: index, _type: 'moment', _id: 2 } },
+    //         {
+    //             "id": "2",
+    //             "date": new Date(),
+    //             "title": "Blue bottle at the Ferry building",
+    //             "description": "Drinking coffee at one of my favorites places",
+    //             "tags": ["san francisco", "blue bottle", "coffee"],
+    //             "pictureURL": "https://res.cloudinary.com/jonarub/image/upload/c_scale,w_768/v1522600997/cauj2mss8godtg5u3br6.jpg"
+    //         }
+    //     ]
+    // })
 })()

@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
     color: blue;
+    font-family: 'sans-serif';
 }
 
 nav {
@@ -31,10 +32,17 @@ nav > div img {
 }
 
 nav > div input {
-    width: 90%;
+    width: 100%;
     height: $height;
-    margin: 0 8px;
-    padding: $medium-padding;
+    margin: 0 0 0 $medium-padding;
+    padding: $medium-padding 0 $medium-padding $medium-padding;
+    border-radius: 5px;
+    border: 1px solid lightblue;
+    line-height: 12px;
+    font-size: 14px;
+    &:focus {
+        outline: none;
+    }
 }
 
 div.moments-container {

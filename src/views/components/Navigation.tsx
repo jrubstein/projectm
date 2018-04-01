@@ -15,7 +15,6 @@ export class Nagivation extends React.Component<NavigationProperties> {
                 <div>
                     <img src="http://profilepics.xyz/wp-content/uploads/2017/07/Cute-Profile-pics-1.gif" />
                     <input type="text" placeholder="Search something..." value={this.props.query} onChange={this.props.fetchMoments} />
-                    <button type="button" />
                 </div>
             </nav>
         )

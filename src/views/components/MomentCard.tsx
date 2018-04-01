@@ -15,7 +15,7 @@ export default class MomentsCard extends React.Component<MomentCardProperties> {
                 <section>
                     <img src={moment.pictureURL} />
                 </section>
-                <section>
+                <section className="moment-title">
                     <span>{moment.title}</span>
                 </section>
             </div>

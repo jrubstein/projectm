@@ -1,13 +1,15 @@
 $height: 50px;
 $medium-padding: 8px;
 $medium-margin: 12px;
-$max-width: 800px;
+$max-width: 600px;
+$moments-max-width: 1200px;
+$background-color: #F1F1F1;
 
 body {
     margin: 0;
     padding: 0;
-    color: blue;
     font-family: 'sans-serif';
+    background-color: $background-color;
 }
 
 nav {
@@ -41,6 +43,8 @@ nav > div input {
     border: 1px solid lightblue;
     line-height: 12px;
     font-size: 14px;
+    background-color: $background-color;
+
     &:focus {
         outline: none;
     }
@@ -48,7 +52,7 @@ nav > div input {
 
 div.moments-container {
     padding: calc($height + $medium-padding * 3) $medium-padding;
-    max-width: $max-width;
+    max-width: $moments-max-width;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
@@ -56,10 +60,30 @@ div.moments-container {
 
 div.moment-container {
     margin: $medium-margin;
-     & img {
+    background: #FFF;
+    padding: 12px;
+
+    & img {
         width: 240px;
         height: 320px;
         border-radius: 5px;
         border: 1px solid lightblue;
+    }
+}
+
+.moments-container .moments-empty {
+    margin: auto;
+    padding-top: 12px;
+}
+
+.moment-container section.moment-title {
+    padding-top: 12px;
+    word-break: break-all;
+    margin: auto;
+
+    & > span {
+        font-style: italic;
+        font-size: 12px;
+        line-height: 14px;
     }
 }

@@ -9,7 +9,8 @@ export default (props) => {
     return (
         <html>
             <head>
-                <title>Title</title>
+                <title>Project M</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
                 {props.styles.map(style => (<link rel="stylesheet" type="text/css" href={`/${style}`} key={style}/>))}
             </head>
             <body>

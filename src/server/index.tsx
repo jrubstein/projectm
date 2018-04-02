@@ -18,6 +18,7 @@ import Home from '../views/Home'
       index: 'moments',
       type: 'moment',
       body: {
+        size : 30,
         query: !!query ? {
           multi_match: {
             query: query,

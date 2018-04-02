@@ -10,6 +10,11 @@ export default (props) => {
         <html>
             <head>
                 <title>Project M</title>
+                <meta property="og:locale" content="en-us" />
+                <meta property="og:title" content="Project M" />
+                <meta property="og:description" content="A private image display" />
+                <meta property="og:url" content="https://jonaprojectm.herokuapp.com/" />
+                <meta property="og:site_name" content="Project M" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 {props.styles.map(style => (<link rel="stylesheet" type="text/css" href={`/${style}`} key={style}/>))}
             </head>

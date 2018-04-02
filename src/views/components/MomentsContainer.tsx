@@ -23,7 +23,7 @@ export class MomentsContainer extends React.Component<MomentsContainerProperties
                     {!!this.props.moments.length && this.props.moments.map(
                         (moment: Moment, index: number) => <MomentsCard moment={moment} key={moment.id} openModal={this.props.openModal} index={index}/>
                     )}
-                    {this.props.moments.length === 0 && <div className="moments-empty">There is no moments for this search</div>}
+                    {this.props.moments.length === 0 && <div className="moments-empty">There are no moments for this search</div>}
                 </div>
                 {!!this.props.moments.length &&
                     <Lightbox

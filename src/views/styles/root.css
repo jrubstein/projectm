@@ -68,6 +68,7 @@ div.moment-container {
         height: 320px;
         border-radius: 5px;
         border: 1px solid lightblue;
+        cursor: pointer;
     }
 }
 

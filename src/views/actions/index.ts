@@ -3,6 +3,32 @@ import axios from 'axios'
 
 export const FETCHING_MOMENTS = 'fetching-moments'
 export const FETCHED_MOMENTS = 'fetched-moments'
+export const OPEN_MODAL='open-modal'
+export const CLOSE_MODAL='close-modal'
+export const CHANGE_IMAGE='change-image'
+
+export const changeImage = (currentImage: number) => {
+    return {
+        type: CHANGE_IMAGE,
+        currentImage
+    }
+}
+
+export const openModal = (currentImage: number) => {
+    return {
+        type: OPEN_MODAL,
+        open: true,
+        currentImage
+    }
+}
+
+export const closeModal = (currentImage: number) => {
+    return {
+        type: CLOSE_MODAL,
+        open: false,
+        currentImage
+    }
+}
 
 export const fetchingMoments = () => {
     return {

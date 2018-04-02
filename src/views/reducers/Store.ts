@@ -8,11 +8,13 @@ import { reducer } from './Moments'
 export interface State {
     moments:{
         moments: Moment[],
-        query?: string
+        query?: string,
+        open: boolean,
+        currentImage?: number
     }
 }
 
-export const initialState: State = {moments: {moments: []}}
+export const initialState: State = {moments: {moments: [], open: false}}
 
 export const combinedReducers = combineReducers<State>({
     moments: reducer,

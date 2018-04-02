@@ -15,7 +15,7 @@ export default (props) => {
             </head>
             <body>
                 <main id="main-container">
-                    <Provider store={createNewStore({moments: {moments: props.moments}})}>
+                    <Provider store={createNewStore({moments: {moments: props.moments, open: false}})}>
                         <Container />
                     </Provider>
                 </main>

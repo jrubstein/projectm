@@ -4,12 +4,15 @@ $medium-margin: 12px;
 $max-width: 600px;
 $moments-max-width: 1200px;
 $background-color: #F1F1F1;
+$line-color: #DEDEDE;
+$color: rgba(0, 0, 0, 0.7);
 
 body {
     margin: 0;
     padding: 0;
     font-family: 'sans-serif';
     background-color: $background-color;
+    color: $color;
 }
 
 nav {
@@ -17,7 +20,7 @@ nav {
     height: calc($height + $medium-padding * 2);
     position: absolute;
     top: 0;
-    border-bottom: 1px solid lightblue;
+    border-bottom: 1px solid $line-color;
 }
 
 nav > div {
@@ -40,11 +43,11 @@ nav > div input {
     margin: 0 0 0 $medium-padding;
     padding: $medium-padding 0 $medium-padding $medium-padding;
     border-radius: 5px;
-    border: 1px solid lightblue;
+    border: 3px solid $line-color;
     line-height: 12px;
     font-size: 14px;
     background-color: $background-color;
-
+    color: $color;
     &:focus {
         outline: none;
     }
@@ -64,10 +67,10 @@ div.moment-container {
     padding: 12px;
 
     & img {
-        width: 240px;
-        height: 320px;
+        width: 250px;
+        height: 375px;
         border-radius: 5px;
-        border: 1px solid lightblue;
+        border: 1px solid $line-color;
         cursor: pointer;
     }
 }
@@ -80,11 +83,13 @@ div.moment-container {
 .moment-container section.moment-title {
     padding-top: 12px;
     word-break: break-all;
-    margin: auto;
+    margin: 12px auto 0;
+    border-top: 1px solid $line-color;
 
     & > span {
+        
         font-style: italic;
-        font-size: 12px;
+        font-size: 16px;
         line-height: 14px;
     }
 }

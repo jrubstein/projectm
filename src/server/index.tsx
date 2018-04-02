@@ -32,9 +32,26 @@ import Home from '../views/Home'
   }
 
   console.log('ping', await client.ping())
-  
+
   router.get('/', async context => {
     context.body = await search(context.query.q)
+    context.status = 200
+  });
+
+  router.get('/tags', async context => {
+    context.body = (await client.search({
+      index: 'moments',
+      type: 'moment',
+      body: {
+        aggs: {
+          tags: {
+            terms: {
+              field: 'tags.raw'
+            }
+          }
+        }
+      }
+    })).aggregations.tags.buckets
     context.status = 200
   });
   
